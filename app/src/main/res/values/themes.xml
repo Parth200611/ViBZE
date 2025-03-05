@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.ViBEZ" parent="Base.Theme.ViBEZ" />
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/lavender</item>
+    </style>
+    <style name="showactionbar" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+        <item name="colorPrimary">@color/lavender</item>
+        <item name="colorOnPrimary">@color/white</item> <!-- Text color on Action Bar -->
+    </style>
 </resources>
