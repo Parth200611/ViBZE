@@ -1,8 +1,11 @@
 package com.mountreachsolution.vibez.User;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowInsetsController;
@@ -59,6 +62,24 @@ BottomNavigationView bottomNavigationView;
             getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayoutuserhome,userProfil).commit();
 
         }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menuuser,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.Request){
+            Intent i = new Intent(UserHomepage.this, RequestPage.class);
+            startActivity(i);
+
+        }
+
         return true;
     }
 }

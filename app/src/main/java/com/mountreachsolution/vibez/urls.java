@@ -9,4 +9,6 @@ public class urls {
     public static String getAllUsereRequestData=address+"getAllUsereRequestData.php";
     public static String AddUser=address+"AddUser.php";
     public static String AddUserImg=address+"AddUserImg.php";
+    public static String SendREquest=address+"SendREquest.php";
+    public static String getRequest=address+"getRequest.php";
 }
