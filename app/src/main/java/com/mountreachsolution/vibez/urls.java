@@ -13,4 +13,6 @@ public class urls {
     public static String getRequest=address+"getRequest.php";
     public static String getAllUser=address+"GetAllUser.php";
     public static String removeuserA=address+"removeuserA.php";
+    public static String sendAccepetRequest=address+"sendAccepetRequest.php";
+    public static String removerequest=address+"removerequest.php";
 }

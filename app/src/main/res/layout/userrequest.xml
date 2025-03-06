@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         app:cardCornerRadius="12dp"
+        android:id="@+id/card"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -15,17 +16,10 @@
             android:padding="12dp"
             >
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:id="@+id/cvImage"
-                android:layout_marginStart="16dp"
 
-                />
            <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_toEndOf="@id/cvImage"
                android:layout_marginTop="12dp"
                android:layout_marginStart="10sp"
                android:id="@+id/ll"
@@ -46,7 +40,6 @@
            </LinearLayout>  <LinearLayout
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_toEndOf="@id/cvImage"
                android:layout_marginTop="4dp"
                android:layout_marginStart="10sp"
             android:layout_below="@id/ll"
@@ -66,58 +59,21 @@
                    />
 
            </LinearLayout>
-             <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_toEndOf="@id/cvImage"
-               android:layout_marginTop="4dp"
-               android:layout_marginStart="10sp"
-            android:layout_below="@id/ll1"
-            android:id="@+id/ll2"
-               >
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Email:"
-                   />
-                    <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Name:"
-                        android:layout_marginStart="2dp"
-                        android:id="@+id/tvEmail"
-                   />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap Here To View Request"
+                android:layout_below="@id/ll1"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/lavender"
 
-           </LinearLayout>  <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_toEndOf="@id/cvImage"
-               android:layout_marginTop="14dp"
-               android:layout_marginStart="10sp"
-            android:layout_below="@id/cvImage"
-            android:id="@+id/ll3"
-
-               >
-               <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Accept"
-                   android:backgroundTint="@color/lavender"
-                   android:id="@+id/btnAccept"
-
-                   />  <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Reject"
-                   android:backgroundTint="#E0BDE6"
-                   android:id="@+id/btnReject"
-            android:layout_marginStart="12dp"
-
-                   />
+                />
 
 
 
-           </LinearLayout>
+
+
 
 
 
