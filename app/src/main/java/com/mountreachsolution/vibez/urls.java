@@ -1,7 +1,7 @@
 package com.mountreachsolution.vibez;
 
 public class urls {
-    public static String address="http://192.168.1.4:80/vibez/";
+    public static String address="http://192.168.1.3:80/vibez/";
     public static String userregister=address+"userregister.php";
     public static String login=address+"login.php";
     public static String Profildata=address+"Profildata.php";
@@ -11,4 +11,6 @@ public class urls {
     public static String AddUserImg=address+"AddUserImg.php";
     public static String SendREquest=address+"SendREquest.php";
     public static String getRequest=address+"getRequest.php";
+    public static String getAllUser=address+"GetAllUser.php";
+    public static String removeuserA=address+"removeuserA.php";
 }
