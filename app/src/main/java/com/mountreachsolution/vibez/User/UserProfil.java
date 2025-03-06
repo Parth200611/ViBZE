@@ -190,6 +190,7 @@ public class UserProfil extends Fragment {
                 bitmap= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filepath);
                 profileImage.setImageBitmap(bitmap);
                 UserImageSaveTodatabase(bitmap,username);
+                UserImageSaveTodatabase2(bitmap,username);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -198,6 +199,48 @@ public class UserProfil extends Fragment {
     }
     private void UserImageSaveTodatabase(Bitmap bitmap, String strTitle) {
         VolleyMultipartRequest volleyMultipartRequest =  new VolleyMultipartRequest(Request.Method.POST, urls.Profilimage, new Response.Listener<NetworkResponse>() {
+            @Override
+            public void onResponse(NetworkResponse response) {
+                Toast.makeText(getActivity(), "Image Save as Profil "+strTitle, Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                String errorMsg = error.getMessage();
+                if (error.networkResponse != null && error.networkResponse.data != null) {
+                    errorMsg = new String(error.networkResponse.data);
+                }
+                Log.e("UploadError", errorMsg);
+                Toast.makeText(getActivity(), "Upload Error: " + errorMsg, Toast.LENGTH_LONG).show();
+
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parms = new HashMap<>();
+                parms.put("tags", strTitle); // Adjusted to match PHP parameter name
+                return parms;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() throws AuthFailureError {
+                Map<String,VolleyMultipartRequest.DataPart> parms = new HashMap<>();
+                long imagename = System.currentTimeMillis();
+                parms.put("pic",new VolleyMultipartRequest.DataPart(imagename+".jpeg",getfiledatafromBitmap(bitmap)));
+
+                return parms;
+
+            }
+
+        };
+        Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
+    }
+
+    private void UserImageSaveTodatabase2(Bitmap bitmap, String strTitle) {
+        VolleyMultipartRequest volleyMultipartRequest =  new VolleyMultipartRequest(Request.Method.POST, urls.AddUserImg, new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 Toast.makeText(getActivity(), "Image Save as Profil "+strTitle, Toast.LENGTH_SHORT).show();

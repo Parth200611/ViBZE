@@ -63,9 +63,53 @@ public class RegisterNow extends AppCompatActivity {
                 progressDialog.show();
 
                 register();
+                addUser();
             }
         });
 
+    }
+
+    private void addUser() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("name",name);
+        params.put("emailid",email);
+        params.put("mobileno",mobileNo);
+        params.put("username",username);
+        params.put("password",password);
+        params.put("gender",gender);
+        params.put("userType",userType);
+        client.post(urls.AddUser,params,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    String ststus= response.getString("success");
+                    if (ststus.equals("1")){
+                        progressDialog.dismiss();
+                        Toast.makeText(RegisterNow.this, "Register Done !", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(RegisterNow.this, LoginActivity.class);
+                        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username", username);
+                        editor.putString("userType", userType);
+                        editor.apply();
+                        startActivity(i);
+                        finish();
+                    }else{
+                        Toast.makeText(RegisterNow.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+            }
+        });
     }
 
     private void register() {
